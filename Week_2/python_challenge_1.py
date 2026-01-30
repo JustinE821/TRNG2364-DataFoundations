@@ -101,6 +101,19 @@ data = {
 df = pd.DataFrame(data)
 
 plt.plot(df["Month"], df["Sales"], marker="o", linestyle="-", color="b", label="sales")
+
+max_sales = df["Sales"].max()
+max_row = df[df["Sales"] == max_sales]
+# Highlight highest point
+plt.scatter(
+    max_row["Month"],
+    max_row["Sales"],
+    color='red',
+    zorder=5,
+    label="Highest Sales"
+)
+
+
 plt.xlabel("Month")
 plt.ylabel("Sales ($)")
 plt.title("Q1 and Q2 Sales 2025")
